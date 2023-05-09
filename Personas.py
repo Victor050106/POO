@@ -5,40 +5,36 @@ class Persona:
         self.profesion = profesion
 
     def saludar(self):
-        print(f"Hola, mi nombre es {self.name} tengo {self.age} años y soy {self.profesion}.")
-
-    def nombre(self):
-        print(f"me llamo {self.name}")
-
-    def edad(self):
-        print(f" mi edad es {self.age} años")
-
-    def trabajo(self):
-        print(f"Me desempeño como {self.profesion}")
-    
-    
+        print(f"Hola, mi nombre es {self.name}\ntengo {self.age} años\nsoy {self.profesion}.\n")
 
 persona1 = Persona("Juan",  25, "ingeniero")
 persona2 = Persona("Maria", 30, "abogada")
 
 persona1.saludar()
-print("")
-persona2.saludar()
 
+persona2.saludar()
+#---------------------herencia-------------
 class Estudiante(Persona):
     def __init__(self, name, age, profesion, semestre):
         super().__init__(name, age, profesion)
-        self.semestre = semestre
+        self._semestre = semestre
     
-    def saludar_estudiante(self):
-        print(f"Hola, mi nombre es {self.name} tengo {self.age} años y voy en el {self.semestre} de mi carrera universitaria ya que quiero ser el mejor {self.profesion}")
+    def saludar(self):
+        print(f"Hola, mi nombre es {self.name}\ntengo {self.age} años y voy en el universidad\nquiero ser el mejor {self.profesion}\n")
+#----------------------encapsulamiento---------------------
+    def get_semestre(self):
+        print(f"voy en el {self._semestre} de mi carrera universitaria\n")
     
-    def semester(self):
-        print(f"voy en el {self.semestre} de mi carrera universitaria ya que quiero ser el mejor {self.profesion}")
+    def set_semestre(self,semestre):
+        self._semestre = semestre
        
 estudiante1 = Estudiante ("Javier", 20, "programador", 6)
 estudiante2 = Estudiante ("Hernesto",19,"diseñador grafico",5)
-print("")
-estudiante1.saludar_estudiante()
-print("")
-estudiante2.saludar_estudiante()
+
+estudiante1.saludar()
+estudiante1.set_semestre(8)
+estudiante1.get_semestre()
+
+estudiante2.saludar()
+estudiante2.set_semestre(7)
+estudiante2.get_semestre()

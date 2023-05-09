@@ -9,80 +9,40 @@ class Cuerpos_celestes:
         self.gravity = gravity
         self.volume = volume
     
-    def cuerpo_celeste(self):
+    def information(self):
         """Muestra información sobre el cuerpo celeste."""
-        print(f"{self.name} es un cuerpo celeste que tiene {self.age} de años.")
-    
-    def posicion(self):
-        print(f"Es el {self.position} del sistema solar.")
-    
-    def gravedad(self):
-        print(f"Cuenta con una gravedad de {self.gravity}")
+        print(f"{self.name} es un cuerpo celeste que tiene {self.age} de años.\nEs el {self.position} del sistema solar.\nCuenta con una gravedad de {self.gravity}\nTiene un volumen de {self.volume} km3\nEn este planeta {self.life} se encuentra vida.\n")
 
-    def volumen(self):
-        print(f"Tiene un volumen de {self.volume} km3")
-    
-    def vida(self):
-        print(f"En este planeta {self.life} se encuentra vida.")
-    
+Cuerpo1=Cuerpos_celestes ("Planeta Tierra","4.54 billones","tercer planeta","9,2 m/s2","1.083.206.916.846","si" )
+Cuerpo2=Cuerpos_celestes ("Júpiter", "4,500 millones d","quinto planeta","24,79 m/s2","1.431.281.810.739.360","no")
 
-    
-Cuerpo1=Cuerpos_celestes ("El planeta Tierra", "4.54 billones", "tercer planeta", "9,2 m/s2"," 1.083.206.916.846", "si" )
-Cuerpo2=Cuerpos_celestes ("Júpiter", "4,500 millones","quinto planeta","24,79 m/s2","1.431.281.810.739.360","no")
+print("TIERRA\n")
+Cuerpo1.information()
 
-print("TIERRA")
-print()
-
-Cuerpo1.cuerpo_celeste()
-print()
-
-Cuerpo1.vida()
-print()
-
-Cuerpo1.posicion()
-print()
-
-Cuerpo1.gravedad()
-print()
-
-Cuerpo1.volumen()
-print()
-
-print("JÚPITER")
-print()
-
-Cuerpo2.cuerpo_celeste()
-print()
-
-Cuerpo2.vida()
-print()
-
-Cuerpo2.posicion()
-print()
-
-Cuerpo2.gravedad()
-print()
-
-Cuerpo2.volumen()
-print()
+print("JÚPITER\n")
+Cuerpo2.information()
 
 #-------------------------Herencia--------------------------
 class Cometa (Cuerpos_celestes):
+    """clase hijo que de la clase Cuerpos celestes"""
     def __init__(self,name, age, position, gravity, volume, life,paso, observacion ):
         super().__init__(name, age, position, gravity, volume, life)
         self.paso=paso
-        self.__observacion=observacion
+        self._observacion=observacion
 
     def information(self):
         print(f"{self.name} es uno de los cometas mas conocidos del mundo, pasa cada {self.paso}")
 #-------------------------encapsulamiento----------------------
     def get_observacion(self):
-        print(f"visto por primera vez en el año {self.__observacion}")
-
+        return f"visto por primera vez en el año {self._observacion}"
+    def set_observacion(self,observacion):
+        self._observacion = observacion
 Cometa1 = Cometa ("El cometa halley", None,None,None,None,None,"75 años aproximadamente","239 a.C")
 
-print("COMETA HALLEY")
-print()
+print("COMETA HALLEY\n")
 
 Cometa1.information()
-Cometa1.get_observacion()
+print(Cometa1.get_observacion())
+
+Cometa1.set_observacion("239 a.C,este dato no se puede cambiar")
+print(Cometa1.get_observacion())
